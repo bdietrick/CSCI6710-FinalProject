@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/0c145004ef.js" crossorigin="anonymous"></script>
+    <script src="/static/js/index.js"></script>
+    {%  block head %}{% endblock %}
+    {% block javascript %}{% endblock %}
+
+</head>
+<body>
+<div class="container-fluid" style="height:100vh;">
+    <div class="page-header">
+        <h1>Garden Exchange Online | <small>Where gardeners help gardeners</small></h1>
+
+    </div>
+    <div class="row" style="background-color:grey">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Garden Exchange</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active">
+                  <a href="#">Home</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Plants and Seeds
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/items" class="navbar-link" style="color:#337ab7;">
+                        <i class="fa-solid fa-seedling"></i>
+                        Browse Plants
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/items" class="navbar-link" style="color:#337ab7;">
+                        <i class="fa-solid fa-wheat-awn"></i>
+                        Browse Seeds
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/items" class="navbar-link" style="color:#337ab7;">
+                        <i class="fa-solid fa-carrot"></i>
+                        Browse Produce
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/createitem" class="navbar-link" style="color:#337ab7;">
+                        <i class="fa-solid fa-pencil"></i>
+                        Post New Plants
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/createitem" class="navbar-link" style="color:#337ab7;">
+                        <i class="fa-solid fa-pencil"></i>
+                        Post New Seeds
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Articles
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/articles" class="navbar-link" style="color:#337ab7;">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                        Browse Articles
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/Post New Article" class="navbar-link" style="color:#337ab7;">
+                        <i class="fa-solid fa-pencil"></i>
+                        Publish New Article
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+            </ul>
+              <form class="navbar-form navbar-left" action="/">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search For Plants">
+                    <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                      </button>
+                    </div>
+                  </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+    <div class="row" style="height:100vh;">
+        <div class="col-lg-3" style="background-color:khaki;height:100vh;">
+            <ul class="nav nav-pills nav-stacked" style="margin-top:20px;">
+                <li {% block home_active %}{% endblock %}>
+                    <a href="/" class="navbar-link">
+                        <i class="fa-solid fa-house-chimney"></i>
+                        Home
+                    </a>
+                </li>
+                <li {% block plants_active %}{% endblock %}>
+                    <a href="/items" class="navbar-link">
+                        <i class="fa-solid fa-seedling"></i>
+                        Search Plants and Seeds
+                    </a>
+                </li>
+                <li {% block articles_active %}{% endblock %}>
+                    <a href="/articles" class="navbar-link">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                        Browse Articles
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-lg-9" style="height:100%;background-color:#ffffff;">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
