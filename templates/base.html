@@ -87,7 +87,7 @@
                   </li>
 
                   <li>
-                    <a href="/Post New Article" class="navbar-link" style="color:#337ab7;">
+                    <a href="/createarticle" class="navbar-link" style="color:#337ab7;">
                         <i class="fa-solid fa-pencil"></i>
                         Publish New Article
                     </a>
@@ -114,7 +114,7 @@
         </nav>
     </div>
     <div class="row" style="height:100vh;">
-        <div class="col-lg-3" style="background-color:khaki;height:100vh;">
+        <div class="col-sm-3" style="background-color:khaki;height:100vh;">
             <ul class="nav nav-pills nav-stacked" style="margin-top:20px;">
                 <li {% block home_active %}{% endblock %}>
                     <a href="/" class="navbar-link">
@@ -137,7 +137,7 @@
             </ul>
 
         </div>
-        <div class="col-lg-9" style="height:100%;background-color:#ffffff;">
+        <div class="col-sm-9" style="height:100%;background-color:#ffffff;">
             {% block body %}{% endblock %}
         </div>
     </div>

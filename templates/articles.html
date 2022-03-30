@@ -3,4 +3,22 @@
 {% block title %}{% endblock %}
 {% block javascript %}{% endblock %}
 {% block articles_active %}class="active"{% endblock %}
-{% block  body %}<h1>Articles</h1>{% endblock %}
+{% block  body %}
+    <h1>Articles</h1>
+
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">How to grow bigger tomatoes</div>
+        <div class="panel-body"><a href="/article">Click Here</a></div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">How to avoid blossom end rot</div>
+      <div class="panel-body"><a href="/article">Click Here</a></div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">How to freeze tomatoes</div>
+      <div class="panel-body"><a href="/article">Click Here</a></div>
+    </div>
+  </div>
+
+{% endblock %}
