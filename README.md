@@ -29,5 +29,5 @@ Because we are now inside a virtual environment. We do not need sudo.
 
 Then you can start the server with:
 ```
-python3 main.py
+python3 app.py
 ```
