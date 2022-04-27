@@ -3,6 +3,9 @@
 * Bhargavi Sanikommu - sanikommub19@students.ecu.edu
 * Emily Morales      - moralesem18@students.ecu.edu
 
+## Video Link
+https://ecu.instructuremedia.com/embed/059727c0-0e11-46a7-b526-5b3c8e33d286
+
 ## Quick Start
 ### Local Test Setup
 First, we need to install a Python 3 virtual environment with:
