@@ -6,45 +6,49 @@
     <h1>Create Article</h1>
 
 
-      <form action="/createitem" method="post" enctype="multipart/form-data">
-        <div class="form-row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Article Category
-                </div>
-                <div class="panel-body">
-                 <div class="form-group">
-                    <div class="radio-inline">
-                      <label><input type="radio" name="category" checked>Vegetable</label>
-                    </div>
-                    <div class="radio-inline">
-                      <label><input type="radio" name="category">Seed</label>
-                    </div>
-                    <div class="radio-inline">
-                      <label><input type="radio" name="category">Miscellaneous</label>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
+      <form action="/createarticle" method="post" enctype="multipart/form-data">
+{#        <div class="form-row">#}
+{#            <div class="panel panel-default">#}
+{#                <div class="panel-heading">#}
+{#                    Article Category#}
+{#                </div>#}
+{#                <div class="panel-body">#}
+{#                 <div class="form-group">#}
+{#                    <div class="radio-inline">#}
+{#                      <label><input type="radio" name="category" checked>Vegetable</label>#}
+{#                    </div>#}
+{#                    <div class="radio-inline">#}
+{#                      <label><input type="radio" name="category">Seed</label>#}
+{#                    </div>#}
+{#                    <div class="radio-inline">#}
+{#                      <label><input type="radio" name="category">Miscellaneous</label>#}
+{#                    </div>#}
+{#                </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
         <div class="form-row">
             <!-- md is short for Medium, >= 768 px -->
             <div class="form-group">
             <label for="student_name">Article Subject</label>
             <!-- possible types:  text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color. -->
-            <input type="text" class="form-control" id="article_subject" placeholder="Enter article subject">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter article title">
             </div>
         </div>
           <div class="form-row">
             <div class="form-group">
               <label for="article_body">Article:</label>
-              <textarea class="form-control" rows="10" id="article_body"></textarea>
+              <textarea class="form-control" rows="10" id="content" name="content"></textarea>
             </div>
         </div>
 
        <div class="form-row">
-         <div class="form-group  col-sm-12">
-            <button class="btn btn-primary">Submit</button>
+         <div class="form-group  col-sm-8">
+             <label for="item_image">Upload an image:</label>
+            <input id="image" name="image" type="file" value="Upload"/>
+         </div>
+         <div class="form-group  col-sm-4">
+            <input type="submit" value="Submit" class="btn btn-primary" />
          </div>
 
        </div>
