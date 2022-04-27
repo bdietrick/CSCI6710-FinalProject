@@ -31,6 +31,7 @@ Base = declarative_base()
 engine = create_engine(util.get_db_uri(), connect_args={'check_same_thread': False}, echo=True)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
+session.rollback()
 
 
 class Plant(Base):
@@ -39,6 +40,17 @@ class Plant(Base):
     category = Column(String(64))
     name = Column(String(64))
     description = Column(String(256))
+    image = Column(String(64))
+
+    def __repr__(self):
+        return '<Item %r' % self.name
+
+
+class Article(Base):
+    __tablename__ = 'articles'
+    id = Column(Integer, primary_key=True)
+    title = Column(String(64))
+    content = Column(String(256))
     image = Column(String(64))
 
     def __repr__(self):
@@ -62,7 +74,11 @@ class UserModel(UserMixin, Base):
 
 @login.user_loader
 def load_user(user_id):
-    return session.query(UserModel).get(int(user_id))
+    try:
+        return session.query(UserModel).get(int(user_id))
+    except:
+        session.rollback()
+        return session.query(UserModel).get(int(user_id))
 
 
 Base.metadata.create_all(engine)
@@ -184,23 +200,45 @@ def get_articles():
     username = ''
     if current_user.is_authenticated:
         username = session.query(UserModel).get(current_user.get_id()).username
-    return render_template('articles.html', username=username)
+
+    articles = session.query(Article).all()
+    return render_template('articles.html', articles=articles, username=username)
 
 
-@app.route('/article', methods=['GET'])
-def get_article():
+@app.route('/article/<identifier>', methods=['GET'])
+def get_article(identifier):
     username = ''
     if current_user.is_authenticated:
         username = session.query(UserModel).get(current_user.get_id()).username
-    return render_template('article.html', username=username)
+
+    article = session.query(Article).get(int(identifier))
+    return render_template('article.html', article=article, username=username)
 
 
-@app.route('/createarticle', methods=['GET','POST'])
+@app.route('/createarticle', methods=['GET', 'POST'])
 @login_required
 def create_article():
     username = ''
     if current_user.is_authenticated:
         username = session.query(UserModel).get(current_user.get_id()).username
+
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        image = request.files['image']
+
+        if image.filename == '':
+            filename = '3ed16f28-7c43-4e92-8a53-cda059dbf47c.png' # no image available
+        else:
+            filename = '' + str(uuid.uuid4()) + '.' + image.filename.rsplit('.')[1]
+            fullpath = util.get_uploads_path() + filename
+            image.save(fullpath)
+
+        new_article = Article(title=title, content=content, image=filename)
+        session.add_all([new_article])
+        session.commit()
+        message = 'Item published - ' + title
+        return render_template('message.html', message=message, username=username)
     return render_template('createarticle.html', username=username)
 
 
