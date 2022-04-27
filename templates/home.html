@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% block  head %}{% endblock %}
 {% block title %}{% endblock %}
-{% block javascript %}{% endblock %}
+{% block javascript %}
+<script>
+$(document).ready(function(){
+    $("#member1").fadeIn();
+    $("#member2").fadeIn("slow");
+    $("#member3").fadeIn(3000);
+});
+</script>
+{% endblock %}
 {% block home_active %}class="active"{% endblock %}
 {% block  body %}
     <br/>
@@ -13,4 +21,15 @@
             Welcome to the Garden Exchange!
         </span>
     </h1>
+    <br/>
+    <br/>
+    <br/>
+    <div style="text-align:center">
+        <h2><u>Group 12 Members</u></h2>
+        <h2 id="member1" style="display:none;font-weight:bold">Brian Dietrick</h2>
+        <h2 id="member2" style="display:none;font-weight:bold">Bhargavi Sanikommu</h2>
+        <h2 id="member3" style="display:none;font-weight:bold">Emily Morales</h2>
+    </div>
+
+
 {% endblock %}

@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/0c145004ef.js" crossorigin="anonymous"></script>
-    <script src="/static/js/index.js"></script>
+    <script src="/static/js/main.js"></script>
     {%  block head %}{% endblock %}
     {% block javascript %}{% endblock %}
 
@@ -38,37 +38,43 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="/items" class="navbar-link" style="color:#337ab7;">
+                    <a href="/plants" class="navbar-link" style="color:#337ab7;">
                         <i class="fa-solid fa-seedling"></i>
                         Browse Plants
                     </a>
                   </li>
 
                   <li>
-                    <a href="/items" class="navbar-link" style="color:#337ab7;">
+                    <a href="/seeds" class="navbar-link" style="color:#337ab7;">
                         <i class="fa-solid fa-wheat-awn"></i>
                         Browse Seeds
                     </a>
                   </li>
 
                   <li>
-                    <a href="/items" class="navbar-link" style="color:#337ab7;">
+                    <a href="/produce" class="navbar-link" style="color:#337ab7;">
                         <i class="fa-solid fa-carrot"></i>
                         Browse Produce
                     </a>
                   </li>
 
                   <li>
-                    <a href="/createitem" class="navbar-link" style="color:#337ab7;">
+                    <a href="/createitem/Plant" class="navbar-link" style="color:#337ab7;">
                         <i class="fa-solid fa-pencil"></i>
                         Post New Plants
                     </a>
                   </li>
 
                   <li>
-                    <a href="/createitem" class="navbar-link" style="color:#337ab7;">
+                    <a href="/createitem/Seed" class="navbar-link" style="color:#337ab7;">
                         <i class="fa-solid fa-pencil"></i>
                         Post New Seeds
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/createitem/Produce" class="navbar-link" style="color:#337ab7;">
+                        <i class="fa-solid fa-pencil"></i>
+                        Post New Produce
                     </a>
                   </li>
                 </ul>
@@ -96,9 +102,9 @@
                 </ul>
               </li>
             </ul>
-              <form class="navbar-form navbar-left" action="/">
+              <form class="navbar-form navbar-left" action="/search" method="post">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search For Plants">
+                    <input type="text" name="search" class="form-control" placeholder="Search For Items">
                     <div class="input-group-btn">
                       <button class="btn btn-default" type="submit">
                         <i class="glyphicon glyphicon-search"></i>
@@ -106,10 +112,18 @@
                     </div>
                   </div>
             </form>
+{% if current_user.is_authenticated %}
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li><a href="#">Welcome {{ username }}</a></li>
+              <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
+{% else %}
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+
+{% endif %}
           </div>
         </nav>
     </div>

@@ -2,4 +2,56 @@
 {% block  head %}{% endblock %}
 {% block title %}{% endblock %}
 {% block javascript %}{% endblock %}
-{% block  body %}<h1>Create Item</h1>{% endblock %}
+{% block  body %}
+    <h1>Publish New Item</h1>
+
+     <form action="/additem" method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Item Category
+                </div>
+                <div class="panel-body">
+                 <div class="form-group">
+                    <div class="radio-inline">
+                      <label><input type="radio" name="item_category" value="Plant" {{ plant_checked }}>Plant</label>
+                    </div>
+                    <div class="radio-inline">
+                      <label><input type="radio" name="item_category" value="Seed" {{ seed_checked }}>Seed</label>
+                    </div>
+                    <div class="radio-inline">
+                      <label><input type="radio" name="item_category" value="Produce" {{ produce_checked }}>Produce</label>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- md is short for Medium, >= 768 px -->
+            <div class="form-group">
+            <label for="item_name">Item Name</label>
+            <!-- possible types:  text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color. -->
+            <input type="text" class="form-control" name="item_name" id="item_name" placeholder="Enter item name">
+            </div>
+        </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="item_description">Description:</label>
+              <textarea class="form-control" rows="10" name="item_description" id="item_description"></textarea>
+            </div>
+        </div>
+
+       <div class="form-row">
+         <div class="form-group  col-sm-8">
+             <label for="item_image">Upload an image:</label>
+            <input id="item_image" name="item_image" type="file" value="Upload"/>
+         </div>
+         <div class="form-group  col-sm-4">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+         </div>
+
+       </div>
+
+      </form>
+
+{% endblock %}

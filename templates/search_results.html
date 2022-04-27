@@ -4,15 +4,16 @@
 {% block javascript %}{% endblock %}
 {% block plants_active %}class="active"{% endblock %}
 {% block  body %}
-    <h1>Plants and Seeds</h1>
+    <h1>Search Results for: {{ search }}</h1>
 
 
   <div class="panel-group">
-  {% for plant in plants %}
+  {% for result in results %}
     <div class="panel panel-default">
-      <div class="panel-heading">{{ plant.name }}</div>
-        <div class="panel-body"><a href="/item/{{ plant.id }}">Click Here</a></div>
+      <div class="panel-heading">{{ result.name }}</div>
+        <div class="panel-body"><a href="/item/{{ result.id }}">Click Here</a></div>
     </div>
   {% endfor %}
+
   </div>
 {% endblock %}

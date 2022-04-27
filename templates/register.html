@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block  head %}{% endblock %}
+{% block title %}{% endblock %}
+{% block javascript %}{% endblock %}
+{% block  body %}
+<br/><br/>
+<form action="" method = "POST">
+    <div class="form-row">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type = "email" name="email" id="email" class="form-control"  placeholder="Enter email address"/>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control"  placeholder="Enter username"/>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control"  placeholder="Enter password"/>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <input type="submit" value="Submit" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <h3>Already Have an Account?</h3><br>
+            <h3><a href ="{{url_for('login')}}">Login Here</a></h3>
+        </div>
+    </div>
+</form>
+{% endblock %}
